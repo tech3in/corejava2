@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MyClass extends ParentClass implements ProcessInterface{
+public class MyClass extends ParentClass implements ProcessInterface,ProcessInterface2{
 	
 	public static final String FIRST_NAME = "firsName";
 	public static final String LAST_NAME = "lastName";
@@ -64,7 +64,8 @@ public class MyClass extends ParentClass implements ProcessInterface{
 			}
 		};
 		myClass.handleRegistration(processRegistration);
-		myClass.handleRegistration(myClass);
+		//myClass.handleRegistration(myClass);
+		//myClass.handleRegistration(myClass);
 		
 		
 		
@@ -72,8 +73,11 @@ public class MyClass extends ParentClass implements ProcessInterface{
 	}
 	
 	public MyClass() {
-		System.out.println("Base Constructor Called");
-		handleRegistration(this);
+		ProcessInterface interface1 = (ProcessInterface)this;
+		handleRegistration(interface1);
+		ProcessInterface2 interface2 = (ProcessInterface2)this;
+		handleRegistration(interface2);
+		
 	}
 	
 	public MyClass(String firstName) {

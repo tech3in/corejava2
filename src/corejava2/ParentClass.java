@@ -11,5 +11,10 @@ public class ParentClass {
 		Student student = new Student();
 		processInterface.init(student);
 	}
+	
+	public void handleRegistration(ProcessInterface2 processInterface) {
+		Student student = new Student();
+		processInterface.init(student);
+	}
 
 }
