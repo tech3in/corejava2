@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Student {
 	
 	private String firstName;
-	private String lastName = "";
+	private String lastName;
 	private int rollNum = -1;
 	private boolean isPassed = false;
 	//private String[] subjects = new String[] {"English","Math","Science"};

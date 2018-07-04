@@ -2,8 +2,10 @@ package corejava2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class MyClass {
+public class MyClass extends ParentClass implements ProcessInterface{
 	
 	public static final String FIRST_NAME = "firsName";
 	public static final String LAST_NAME = "lastName";
@@ -53,12 +55,25 @@ public class MyClass {
 		System.out.println((int)studentObj.get(MyClass.ROLL_NUM));
 		
 		ArrayList<HashMap<String, Object>> sts = new ArrayList<HashMap<String, Object>>();
+		ProcessRegistration processRegistration = new ProcessRegistration() {
+			
+			@Override
+			public void init(Student student) {
+				// TODO Auto-generated method stub
+				System.out.println("Called");
+			}
+		};
+		myClass.handleRegistration(processRegistration);
+		myClass.handleRegistration(myClass);
+		
+		
 		
 		
 	}
 	
 	public MyClass() {
 		System.out.println("Base Constructor Called");
+		handleRegistration(this);
 	}
 	
 	public MyClass(String firstName) {
@@ -73,11 +88,16 @@ public class MyClass {
 		System.out.println("Contructor with String and Int: "+firstName+", "+rollNum);
 	}
 	
+	
+	
 	public MyClass(String...names) {
 		System.out.println("Contructor with strings... called");
 		for(int i = 0; i<names.length; i++) {
+			
 			System.out.println(names[i]);
 		}
+		
+		
 
 	}
 	
@@ -86,14 +106,23 @@ public class MyClass {
 		System.out.println(student.getLastName());
 		System.out.println(student.getRollNum());
 		System.out.println(student.isPassed());
+		
 	}
 	
 	public void printStudents(ArrayList<Student> students) {
 		
 		for (int i= 0; i <students.size(); i++) {
+			
 			System.out.println(students.get(i).getFirstName());
 			System.out.println(students.get(i).getRollNum());
+					
 		}
+	}
+
+	@Override
+	public void init(Student student) {
+		// TODO Auto-generated method stub
+		System.out.println("Interface Obj Called");
 	}
 	
 	
